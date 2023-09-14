@@ -74,9 +74,7 @@ typedef int socklen_t;
 #endif
 
 #if defined(__FreeBSD__)
-
 /* FreeBSD uses these alternate names for fields in the sigval structure */
-
 #define sival_int sigval_int
 #define sival_ptr sigval_ptr
 #endif

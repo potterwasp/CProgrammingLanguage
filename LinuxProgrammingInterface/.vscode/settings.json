@@ -24,7 +24,8 @@
         "*.rex": "rexx",
         "*.rexx": "rexx",
         "get_num.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "ename.h": "c"
     },
     "C_Cpp.default.browse.path": [
         "${workspaceFolder}/common/headers"

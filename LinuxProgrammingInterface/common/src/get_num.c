@@ -46,7 +46,6 @@ static long getNum(const char *fname,const char *arg, int flags, const char *nam
         gnFail(fname,"value must be > 0",arg,name);
 
     return res;
-
 }
 
 long getLong(const char *arg,int flags,const char *name)

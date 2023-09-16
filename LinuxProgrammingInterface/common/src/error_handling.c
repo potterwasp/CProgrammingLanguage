@@ -99,7 +99,8 @@ errExit(const char *format,...)
 
 
 
-/* Display error message including errNo diagnostic and terminate the process by calling _exit() 
+/* 
+   Display error message including errNo diagnostic and terminate the process by calling _exit() 
 
    The relationship between this function and errExit is analogous to _exit(2) and exit(3)
    In case of _exit(2) the error handlers are not callled and exit(3) error handlers are called.
@@ -127,6 +128,71 @@ err_exit(const char * format,...)
 }
 
 /*
-
-
+    Prints the errnum string corresponding to the errnum from ename. Same as errExit() 
+    but expects the errnum in the arguements
 */
+
+void 
+errExitEN(int errnum,const char * format,...)
+{
+    va_list argList;
+    
+    va_start(argList,format);
+    outputError(TRUE,errnum,TRUE,format,argList);
+    va_end(argList);
+
+    terminate(TRUE);
+}
+
+
+/* print an error message without the errno diagnostic */
+
+void
+fatal(const char *format,...)
+{
+    va_list argList;
+
+    va_start(argList,format);
+    outputError(FALSE,errno,TRUE,format,argList);
+    va_end(argList);
+
+    terminate(TRUE);
+
+}
+
+
+/* used to diagnose command usage error and terminate the program */
+
+void
+usageErr(const char *format,...)
+{
+    va_list argList;
+
+    fflush(stdout); //flush any stdout buffer , pending stdout
+    
+    fprintf(stderr,"Usage: ");
+    va_start(argList,format);
+    vfprintf(stderr,format,argList);
+    va_end(argList);
+
+    fflush(stderr);
+    exit(EXIT_FAILURE);
+}
+
+/* used to diagnose error in command line arguements */
+void 
+cmdLineErr(const char *format,...)
+{
+    va_list argList;
+
+    fflush(stdout); // flush any pending stdout
+
+    fprintf(stderr,"Comand line usage error :");
+    va_start(argList,format);
+    vfprintf(stderr,format,argList); 
+    va_end(argList);
+
+    fflush(stderr);
+
+    exit(EXIT_FAILURE);
+}

@@ -38,7 +38,7 @@ Name: errExitEN
 Description: Same as errExit but instead of printing the error text corresponding to the current value of error number it prints the text
              corresponding to the error number ( see ename.h )
 */
-void errExitEN(const char *format,...) NORETURN;
+void errExitEN(int errnum,const char *format,...) NORETURN;
 
 //to diagnose other errors we use the following functions
 
@@ -48,7 +48,7 @@ void fatal(const char *format,...) NORETURN;
 //the usageErr function is used to diagnose the errors in command line arguement usage
 void usageErr(const char *format,...) NORETURN;
 
-//the cmdLineErr is similar to usage error but is used to diagnosing errors in the command line arguements speified in the program
+/* The cmdLineErr is similar to usage error but is used to diagnosing errors in the command line arguements speified in the program */
 void cmdLineErr(const char *format,...) NORETURN;
 
 #endif

@@ -8,7 +8,7 @@
 #include<errno.h>           /* Declares the error numbers and defines the error constants */
 #include<string.h>          /* Commonly used string handling functions */
 #include"get_num.h"         /* Declares our functions for handling numeric arguements (getInt(),getLong())*/
-#include"error_functions.h" /* Declares our error-handling functions */
+#include"error_handling.h"  /* Declares our error-handling functions */
 
 /* Some unix implementations define TRUE and FALSE so we will first undefine it here */
 #ifdef TRUE
